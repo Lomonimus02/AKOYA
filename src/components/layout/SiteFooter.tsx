@@ -16,7 +16,7 @@ export function SiteFooter() {
           {ENQUIRY_EMAIL}
         </a>
         <p className="mt-10 text-[0.65rem] tracking-[0.2em] text-ink/35 uppercase">
-          Akoya Penthouse · Floors 46, 47 & 48
+          Akoya Penthouse · The Suites · Living · Sky Terrace
         </p>
       </PagePad>
     </footer>

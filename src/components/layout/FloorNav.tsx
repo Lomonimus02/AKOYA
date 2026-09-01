@@ -7,7 +7,7 @@ export function FloorNav() {
 
   return (
     <nav
-      aria-label="Residence floors"
+      aria-label="Residence"
       aria-hidden={!visible}
       inert={!visible}
       className={cn(
@@ -20,7 +20,7 @@ export function FloorNav() {
         compact
         interactive={visible}
         activeFloor={active}
-        className="h-[14rem] w-[5.5rem] [filter:drop-shadow(0_2px_14px_rgba(245,251,250,0.72))] lg:h-[17.5rem] lg:w-[6.25rem]"
+        className="h-[14rem] w-[6.75rem] [filter:drop-shadow(0_2px_14px_rgba(245,251,250,0.72))] lg:h-[17.5rem] lg:w-[7.5rem]"
       />
     </nav>
   )

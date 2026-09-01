@@ -98,33 +98,23 @@ function FloorCopy({
     <>
       <p
         className={cn(
-          'font-display leading-none font-light transition-colors duration-1000 ease-out [text-shadow:0_10px_36px_rgba(20,52,58,0.45)]',
-          compact ? 'text-[2.75rem]' : 'text-5xl lg:text-7xl',
+          'font-display leading-[1.02] font-light transition-colors duration-1000 ease-out [text-shadow:0_10px_36px_rgba(20,52,58,0.45)]',
+          compact ? 'text-[1.85rem]' : 'text-[clamp(2.4rem,4.6vw,4.6rem)]',
           dimmed ? 'text-white/55' : 'text-white/92',
         )}
       >
-        {floor.number}
+        {floor.title}
       </p>
-      <div className={compact ? 'mt-2.5' : 'mt-3'}>
-        <p
-          className={cn(
-            'font-display leading-[1.12] font-light text-white [text-shadow:0_8px_28px_rgba(20,52,58,0.4)]',
-            compact ? 'text-[1.35rem]' : 'text-[clamp(1.25rem,2.2vw,2.15rem)]',
-          )}
-        >
-          {floor.title}
-        </p>
-        <p
-          className={cn(
-            'text-white/86 [text-shadow:0_8px_24px_rgba(20,52,58,0.35)]',
-            compact
-              ? 'mt-2.5 text-[0.9rem] leading-[1.55]'
-              : 'mt-3 text-[0.92rem] leading-[1.7]',
-          )}
-        >
-          {floor.body}
-        </p>
-      </div>
+      <p
+        className={cn(
+          'text-white/86 [text-shadow:0_8px_24px_rgba(20,52,58,0.35)]',
+          compact
+            ? 'mt-2.5 text-[0.9rem] leading-[1.55]'
+            : 'mt-4 max-w-sm text-[0.92rem] leading-[1.7]',
+        )}
+      >
+        {floor.body}
+      </p>
     </>
   )
 }
@@ -239,7 +229,7 @@ export function DiscoverResidence() {
 
             return (
               <motion.div
-                key={floor.number}
+                key={floor.id}
                 initial={false}
                 animate={pin ? undefined : { flexGrow: tapGrow }}
                 transition={reduce ? { duration: 0 } : phoneGrowTransition}
@@ -274,7 +264,7 @@ export function DiscoverResidence() {
                 <button
                   type="button"
                   aria-expanded={isOpen}
-                  aria-label={`${floor.number}. ${floor.title}`}
+                  aria-label={floor.title}
                   className="absolute inset-0 z-10 flex items-end px-5 pt-5 pb-[max(2.25rem,calc(env(safe-area-inset-bottom)+1.25rem))] text-left"
                   onClick={() => setFloor(openRef.current === i ? null : i)}
                 >
@@ -335,7 +325,7 @@ export function DiscoverResidence() {
 
           return (
             <motion.div
-              key={floor.number}
+              key={floor.id}
               aria-hidden="true"
               initial={false}
               animate={i === 0 ? undefined : { clipPath: desktopClip }}
@@ -396,9 +386,9 @@ export function DiscoverResidence() {
         {floors.map((floor, i) =>
           i === 0 ? (
             <motion.a
-              key={`${floor.number}-hit`}
+              key={`${floor.id}-hit`}
               href={floor.href}
-              aria-label={`${floor.number}. ${floor.title}`}
+              aria-label={floor.title}
               className="absolute inset-0 outline-offset-[-6px]"
               style={{ clipPath: clip46, zIndex: 12 }}
               onClick={onHashClick}
@@ -412,9 +402,9 @@ export function DiscoverResidence() {
             />
           ) : (
             <a
-              key={`${floor.number}-hit`}
+              key={`${floor.id}-hit`}
               href={floor.href}
-              aria-label={`${floor.number}. ${floor.title}`}
+              aria-label={floor.title}
               className="absolute inset-0 outline-offset-[-6px]"
               style={{ clipPath: restClipDesktop[i], zIndex: 12 - i }}
               onClick={onHashClick}

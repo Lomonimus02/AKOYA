@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
-import type { FloorNumber } from '../data/copy'
+import type { FloorId } from '../data/copy'
 
 const SECTIONS = [
-  { id: 'retreat', number: '46' as const },
-  { id: 'experience', number: '47' as const },
-  { id: 'ascend', number: '48' as const },
+  { id: 'retreat', floor: 'suites' as const },
+  { id: 'experience', floor: 'living' as const },
+  { id: 'ascend', floor: 'sky' as const },
 ] as const
 
 export function useActiveFloor() {
-  const [active, setActive] = useState<FloorNumber | null>(null)
+  const [active, setActive] = useState<FloorId | null>(null)
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -16,18 +16,23 @@ export function useActiveFloor() {
       const first = document.getElementById(SECTIONS[0].id)
       const probe = window.innerHeight * 0.36
       const showAt = window.innerHeight * 0.78
-      const visibleNow = first
+      let visibleNow = first
         ? first.getBoundingClientRect().top < showAt
         : false
 
-      let next: FloorNumber | null = null
+      const understand = document.getElementById('understand')
+      if (understand && understand.getBoundingClientRect().top < window.innerHeight * 0.82) {
+        visibleNow = false
+      }
+
+      let next: FloorId | null = null
       for (const section of SECTIONS) {
         const el = document.getElementById(section.id)
         if (!el) continue
-        if (el.getBoundingClientRect().top <= probe) next = section.number
+        if (el.getBoundingClientRect().top <= probe) next = section.floor
       }
 
-      if (visibleNow && !next) next = SECTIONS[0].number
+      if (visibleNow && !next) next = SECTIONS[0].floor
 
       setVisible(visibleNow)
       setActive(next)

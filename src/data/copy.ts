@@ -9,26 +9,29 @@ export const nav = [
 
 export const floors = [
   {
-    number: '46',
-    title: 'The Private Suites',
+    id: 'suites',
+    mark: 'Suites',
+    title: 'The Suites',
     href: '#retreat',
     body: 'The bedroom level is designed as a retreat above the city. Three bedrooms, expansive views, and private outdoor access.',
   },
   {
-    number: '47',
-    title: 'The Living Residence',
+    id: 'living',
+    mark: 'Living',
+    title: 'Living & Dining',
     href: '#experience',
     body: 'The social heart of the home. Living and dining behind curved glass, with the Miami horizon continuously in view.',
   },
   {
-    number: '48',
-    title: 'Office & Sky Terrace',
+    id: 'sky',
+    mark: 'Sky',
+    title: 'Sky Terrace',
     href: '#ascend',
     body: 'A private world at the highest level: glass-wrapped office, outdoor lounge, wet bar, and dedicated bathroom.',
   },
 ] as const
 
-export type FloorNumber = (typeof floors)[number]['number']
+export type FloorId = (typeof floors)[number]['id']
 
 export const heroFacts = [
   '$40,000 per month',
@@ -47,11 +50,35 @@ export const services = [
   'Secured building access & front desk',
 ] as const
 
+export const understandStay = {
+  label: 'Minimum stay',
+  unit: 'nights',
+  days: 30,
+}
+
+export const understandMasthead = {
+  label: 'Understand',
+  titleLines: ['The terms', 'of residence'] as const,
+  tagline: "Everything you need. Nothing you don't.",
+  index: '02',
+  indexName: 'Residence',
+}
+
 export const pricingFacts = [
-  'Furnished',
-  'Three bedrooms',
-  'Five bathrooms',
-  'Private rooftop',
-  'Private Beach House',
-  'Three parking spaces',
+  { title: 'Furnished', line: 'Fully furnished private residence' },
+  { title: 'Three bedrooms', line: 'City, ocean, and a quieter third' },
+  { title: 'Five bathrooms', line: 'Proportioned for guests who stay' },
+  {
+    title: 'Private rooftop',
+    line: 'The Sky Terrace, yours alone',
+    hero: true,
+    href: '#ascend',
+  },
+  {
+    title: 'Private Beach House',
+    line: 'The Atlantic, a level below',
+    hero: true,
+    href: '#descend',
+  },
+  { title: 'Three parking spaces', line: 'Valet-held, always waiting' },
 ] as const

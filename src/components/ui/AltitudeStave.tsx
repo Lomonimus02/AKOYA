@@ -1,31 +1,31 @@
-import { floors, type FloorNumber } from '../../data/copy'
+import { floors, type FloorId } from '../../data/copy'
 import { cn } from '../../lib/cn'
 import { onHashClick } from '../../lib/scrollTo'
 
-export type { FloorNumber }
+export type { FloorId }
 
 const FLOOR_MARKS = [
-  { number: '46' as const, cy: 32, top: '13.3%' },
-  { number: '47' as const, cy: 120, top: '50%' },
-  { number: '48' as const, cy: 208, top: '86.7%' },
+  { id: 'suites' as const, cy: 32, top: '13.3%' },
+  { id: 'living' as const, cy: 120, top: '50%' },
+  { id: 'sky' as const, cy: 208, top: '86.7%' },
 ] as const
 
-function metaFor(number: FloorNumber) {
-  return floors.find((floor) => floor.number === number)
+function metaFor(id: FloorId) {
+  return floors.find((floor) => floor.id === id)
 }
 
 export function AltitudeStave({
-  activeFloor = '46',
+  activeFloor = 'suites',
   interactive = false,
   compact = false,
   className,
 }: {
-  activeFloor?: FloorNumber | null
+  activeFloor?: FloorId | null
   interactive?: boolean
   compact?: boolean
   className?: string
 }) {
-  const current = activeFloor ?? '46'
+  const current = activeFloor ?? 'suites'
 
   return (
     <div
@@ -45,9 +45,9 @@ export function AltitudeStave({
           className="text-aqua/50"
         />
         {FLOOR_MARKS.map((mark) =>
-          current === mark.number ? (
+          current === mark.id ? (
             <circle
-              key={mark.number}
+              key={mark.id}
               cx="38"
               cy={mark.cy}
               r="4.5"
@@ -55,7 +55,7 @@ export function AltitudeStave({
             />
           ) : (
             <circle
-              key={mark.number}
+              key={mark.id}
               cx="38"
               cy={mark.cy}
               r="3.75"
@@ -68,38 +68,39 @@ export function AltitudeStave({
         )}
       </svg>
       {FLOOR_MARKS.map((mark) => {
-        const active = current === mark.number
+        const floor = metaFor(mark.id)
+        const active = current === mark.id
         return (
           <p
-            key={mark.number}
+            key={mark.id}
             aria-hidden="true"
             className={cn(
-              'pointer-events-none absolute left-[42%] -translate-y-1/2 font-display leading-none font-light tabular-nums',
+              'pointer-events-none absolute left-[40%] -translate-y-1/2 font-sans leading-none font-medium tracking-[0.16em] uppercase',
               active
                 ? compact
-                  ? 'text-[1.55rem] tracking-[-0.04em] text-lagoon md:text-[1.85rem] lg:text-[2.2rem]'
-                  : 'text-[clamp(1.85rem,3.4vw,2.75rem)] tracking-[-0.04em] text-lagoon'
+                  ? 'text-[0.72rem] text-lagoon'
+                  : 'text-[0.82rem] text-lagoon'
                 : compact
-                  ? 'text-[1.05rem] tracking-[-0.03em] text-aqua/75 md:text-[1.2rem] lg:text-[1.45rem]'
-                  : 'text-[clamp(1.25rem,2.4vw,1.85rem)] tracking-[-0.03em] text-aqua/75',
+                  ? 'text-[0.62rem] text-aqua/75'
+                  : 'text-[0.68rem] text-aqua/75',
             )}
             style={{ top: mark.top }}
           >
-            {mark.number}
+            {floor?.mark}
           </p>
         )
       })}
       {interactive
         ? FLOOR_MARKS.map((mark, i) => {
-            const floor = metaFor(mark.number)
+            const floor = metaFor(mark.id)
             if (!floor) return null
-            const active = current === mark.number
+            const active = current === mark.id
             return (
               <a
-                key={`${mark.number}-hit`}
+                key={`${mark.id}-hit`}
                 href={floor.href}
                 onClick={onHashClick}
-                aria-label={`${floor.number}. ${floor.title}`}
+                aria-label={floor.title}
                 aria-current={active ? 'location' : undefined}
                 className="pointer-events-auto absolute z-10 cursor-pointer rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lagoon"
                 style={{

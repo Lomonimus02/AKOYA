@@ -48,31 +48,41 @@ export function EnquireForm() {
 
   return (
     <section id="enquire" className="enquire-wash scroll-mt-24">
-      <div className="grid lg:min-h-dvh lg:grid-cols-[minmax(32rem,42%)_minmax(0,1fr)]">
-        <div className="flex items-center px-6 pt-32 pb-24 md:px-12 md:pt-44 md:pb-32 lg:px-12 lg:pt-56 xl:px-16">
-          <div className="w-full">
+      <div className="grid lg:min-h-dvh lg:grid-cols-[42fr_58fr]">
+        <div className="flex items-center px-6 pt-28 pb-16 md:px-12 md:pt-36 md:pb-20 lg:px-10 lg:py-16 xl:px-14 xl:py-20">
+          <div className="enquire-stack w-full">
             <Reveal>
               <SectionCopy
+                className="max-w-none"
+                titleClassName="enquire-headline"
                 label="Enquire"
                 title={
                   <>
-                    Some residences are viewed.
+                    Some residences
                     <br />
-                    This one is experienced.
+                    are viewed.
+                    <br />
+                    This one is
+                    <br />
+                    experienced.
                   </>
                 }
                 body="For availability, private viewings and bespoke concierge arrangements, enquire privately."
               />
+              <p className="enquire-detail">
+                <span>Private viewings · 7 days a week</span>
+                <span>Miami Beach, FL</span>
+              </p>
             </Reveal>
 
             {status === 'success' ? (
               <div
-                className="mt-12 max-w-lg text-[1.02rem] leading-relaxed text-ink/80"
+                className="enquire-success"
                 role="status"
                 aria-live="polite"
               >
                 <p>Thank you. Your enquiry has been prepared.</p>
-                <p className="mt-4">
+                <p>
                   If your email client did not open, write to{' '}
                   <a
                     className="text-lagoon underline underline-offset-4"
@@ -84,36 +94,39 @@ export function EnquireForm() {
                 </p>
               </div>
             ) : (
-              <form className="mt-12 max-w-lg" onSubmit={onSubmit} noValidate>
-                <Field name="name" label="Name" required />
-                <Field name="email" label="Email" type="email" required />
-                <Field name="dates" label="Preferred dates or duration" />
-                <label className="mb-6 block">
-                  <span className="mb-2 block text-[0.68rem] tracking-[0.2em] text-lagoon/80 uppercase">
-                    Your enquiry
-                  </span>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    className="w-full resize-y border-0 border-b border-aqua/50 bg-transparent py-3 text-ink outline-none focus:border-lagoon"
-                  />
-                </label>
+              <form className="enquire-form" onSubmit={onSubmit} noValidate>
+                <Field name="name" label="Name" autoComplete="name" required />
+                <Field
+                  name="email"
+                  label="Email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                />
+                <Field name="dates" label="Preferred dates" />
+                <Field name="message" label="Your enquiry" multiline />
                 {status === 'error' ? (
-                  <p className="mb-4 text-sm text-ink" role="alert">
+                  <p className="enquire-error" role="alert">
                     {error}
                   </p>
                 ) : null}
-                <button
-                  type="submit"
-                  className="mt-4 w-full bg-lagoon py-3.5 text-[0.72rem] font-medium tracking-[0.24em] text-white uppercase transition-colors hover:bg-azure"
-                >
-                  Submit enquiry
+                <button type="submit" className="enquire-cta">
+                  <span>Request a private viewing</span>
+                  <span className="enquire-cta-rule" aria-hidden="true" />
+                  <span className="enquire-cta-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </button>
+                <p className="enquire-assurance">
+                  A member of our residence team
+                  <br />
+                  will respond within 24 hours.
+                </p>
               </form>
             )}
           </div>
         </div>
-        <div className="min-h-[50vh] lg:h-full">
+        <div className="min-h-[50vh] lg:sticky lg:top-0 lg:h-dvh">
           <Photo
             src={photos.poolHigh}
             alt="Pool, palms and the Atlantic from above"
@@ -133,23 +146,30 @@ function Field({
   label,
   type = 'text',
   required = false,
+  multiline = false,
+  autoComplete,
 }: {
   name: string
   label: string
   type?: string
   required?: boolean
+  multiline?: boolean
+  autoComplete?: string
 }) {
   return (
-    <label className="mb-8 block">
-      <span className="mb-2 block text-[0.68rem] tracking-[0.2em] text-lagoon/80 uppercase">
-        {label}
-      </span>
-      <input
-        name={name}
-        type={type}
-        required={required}
-        className="w-full border-0 border-b border-aqua/50 bg-transparent py-3 text-ink outline-none focus:border-lagoon"
-      />
+    <label className="enquire-field">
+      <span className="enquire-label">{label}</span>
+      {multiline ? (
+        <textarea name={name} className="enquire-control enquire-textarea" />
+      ) : (
+        <input
+          name={name}
+          type={type}
+          required={required}
+          autoComplete={autoComplete}
+          className="enquire-control"
+        />
+      )}
     </label>
   )
 }
