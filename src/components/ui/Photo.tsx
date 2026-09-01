@@ -6,9 +6,11 @@ type Props = {
   caption?: string
   className?: string
   imgClassName?: string
+  captionClassName?: string
   ken?: boolean
   priority?: boolean
   objectPosition?: string
+  stretch?: boolean
 }
 
 export function Photo({
@@ -17,18 +19,27 @@ export function Photo({
   caption,
   className,
   imgClassName,
+  captionClassName,
   ken = true,
   priority = false,
   objectPosition,
+  stretch = false,
 }: Props) {
   return (
-    <figure className={className}>
-      <div className="h-full overflow-hidden">
+    <figure className={cn(stretch && 'flex h-full flex-col', className)}>
+      <div
+        className={
+          stretch
+            ? 'relative min-h-[50vh] flex-1 overflow-hidden'
+            : 'h-full overflow-hidden'
+        }
+      >
         <img
           src={src}
           alt={alt}
           className={cn(
-            'h-full w-full max-w-none object-cover',
+            'w-full max-w-none object-cover',
+            stretch ? 'absolute inset-0 h-full' : 'h-full',
             ken && 'photo-drift',
             imgClassName,
           )}
@@ -39,7 +50,12 @@ export function Photo({
         />
       </div>
       {caption ? (
-        <figcaption className="mt-3 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase">
+        <figcaption
+          className={cn(
+            'mt-3 shrink-0 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase',
+            captionClassName,
+          )}
+        >
           {caption}
         </figcaption>
       ) : null}

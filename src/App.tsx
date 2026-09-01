@@ -1,6 +1,5 @@
 import { Hero } from './components/sections/Hero'
-import { DiscoverResidence } from './components/sections/DiscoverResidence'
-import { RetreatBedrooms } from './components/sections/RetreatBedrooms'
+import { DiscoverRetreatStack } from './components/sections/DiscoverRetreatStack'
 import { ExperienceLiving } from './components/sections/ExperienceLiving'
 import { AscendSky } from './components/sections/AscendSky'
 import { DescendBeachHouse } from './components/sections/DescendBeachHouse'
@@ -21,8 +20,7 @@ export default function App() {
       <FloorNav />
       <main>
         <Hero />
-        <DiscoverResidence />
-        <RetreatBedrooms />
+        <DiscoverRetreatStack />
         <ExperienceLiving />
         <AscendSky />
         <DescendBeachHouse />

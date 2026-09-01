@@ -4,7 +4,7 @@ import { useMedia } from '../../hooks/useMedia'
 import { cn } from '../../lib/cn'
 import { PagePad } from '../ui/PagePad'
 import { Reveal } from '../ui/Reveal'
-import { SectionLabel } from '../ui/SectionLabel'
+import { SectionCopy } from '../ui/SectionCopy'
 
 const grounds = [
   {
@@ -63,31 +63,32 @@ export function IndulgeAmenities() {
 
   return (
     <section id="indulge" className="indulge-wash scroll-mt-24">
-      <PagePad className="pt-28 pb-10 md:pt-40 md:pb-12 lg:pt-52 lg:pb-14">
-        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(17rem,24rem)] lg:gap-16">
+      <PagePad className="pt-32 pb-10 md:pt-44 md:pb-14 lg:pt-56 lg:pb-16">
+        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20">
           <Reveal>
-            <SectionLabel light>Indulge</SectionLabel>
-            <h2 className="font-display font-light text-ink">
-              <span className="block max-w-xl text-[clamp(2.05rem,4.2vw,3.35rem)] leading-[1.08]">
-                A residence with a
-                <br />
-                resort at its
-              </span>
-              <span className="indulge-door-word mt-1 block tracking-[-0.055em] text-lagoon">
-                door
-              </span>
-            </h2>
+            <SectionCopy
+              label="Indulge"
+              title={
+                <>
+                  A residence with a resort at its{' '}
+                  <span className="italic text-lagoon">door</span>
+                </>
+              }
+              body="Private beach access, pool, wellness, tennis and outdoor living — the ocean and the amenities of Akoya at the door of the residence."
+            />
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="max-w-sm text-[1.05rem] leading-[1.8] text-ink/75 lg:mb-3 lg:border-l lg:border-lagoon/25 lg:pl-6">
-              Private beach access, pool, wellness, tennis and outdoor living —
-              the ocean and the amenities of Akoya at the door of the residence.
+            <p
+              aria-hidden="true"
+              className="font-display text-[clamp(4.5rem,10vw,7rem)] leading-none font-light text-aqua/80"
+            >
+              04
             </p>
           </Reveal>
         </div>
       </PagePad>
 
-      <div className="px-6 pb-24 md:px-12 md:pr-28 md:pb-32 lg:px-20 lg:pr-32">
+      <div className="pb-24 md:pb-32">
         <Reveal>
           <figure>
             <div
@@ -163,7 +164,7 @@ export function IndulgeAmenities() {
                 )
               })}
             </div>
-            <figcaption className="mt-3 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase">
+            <figcaption className="mt-3 px-6 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase md:px-12 lg:px-20">
               The grounds · at the door
             </figcaption>
           </figure>

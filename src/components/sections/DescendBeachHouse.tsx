@@ -1,131 +1,93 @@
-import { floors } from '../../data/copy'
-import { cn } from '../../lib/cn'
-import { onHashClick } from '../../lib/scrollTo'
+import { photos } from '../../data/images'
 import { PagePad } from '../ui/PagePad'
 import { Reveal } from '../ui/Reveal'
 import { SectionCopy } from '../ui/SectionCopy'
 
-const skyStops = [...floors].reverse()
-
 const rooms = [
-  'Living area',
-  'Kitchenette',
-  'Bathroom',
-  'Television',
-  'Wi-Fi',
+  { title: 'Living', body: 'A room of your own below' },
+  { title: 'Kitchenette', body: 'Coffee after the swim' },
+  { title: 'Bathroom', body: 'Sand, then water, then rest' },
+  { title: 'Television', body: 'Shade when the light is high' },
+  { title: 'Wi-Fi', body: 'The sky residence, continued' },
 ] as const
-
-function WaveMark({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 72 14"
-      className={cn('w-[3.75rem] text-lagoon/45', className)}
-      aria-hidden="true"
-    >
-      <path
-        d="M0 8 Q9 2 18 8 T36 8 T54 8 T72 8"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.15"
-      />
-    </svg>
-  )
-}
 
 export function DescendBeachHouse() {
   return (
     <section id="descend" className="descend-wash scroll-mt-24">
-      <PagePad className="pt-32 md:pt-44 lg:pt-56">
-        <Reveal>
-          <SectionCopy
-            label="Descend"
-            title={
-              <>
-                Your private Beach House
-                <br />
-                at sea level
-              </>
-            }
-            body="Your residence in the sky. Your beach house below."
-          />
-        </Reveal>
-      </PagePad>
-
-      <PagePad className="pt-16 pb-24 md:pt-24 md:pb-32 lg:pt-28">
-        <Reveal>
-          <div className="descend-chart mx-auto max-w-3xl">
-            {skyStops.map((floor) => (
-              <a
-                key={floor.number}
-                href={floor.href}
-                onClick={onHashClick}
-                aria-label={`${floor.number}. ${floor.title}`}
-                className="flex min-h-11 gap-6 text-ink/70 transition-colors hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-lagoon md:gap-10"
-              >
-                <div className="flex w-12 shrink-0 flex-col items-center self-stretch md:w-16">
-                  <p className="font-display text-[1.45rem] leading-none font-light text-lagoon tabular-nums md:text-[1.7rem]">
-                    {floor.number}
-                  </p>
-                  <div className="mt-3 w-px min-h-7 flex-1 bg-lagoon/20" />
-                </div>
-                <p className="min-w-0 flex-1 pt-1 pb-8 font-display text-[1.25rem] leading-snug font-light md:pb-10 md:text-[1.4rem]">
-                  {floor.title}
+      <PagePad className="pt-32 pb-10 md:pt-44 md:pb-14 lg:pt-56 lg:pb-16">
+        <div className="grid items-end gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20">
+          <Reveal>
+            <SectionCopy
+              kicker="0"
+              label="Descend"
+              title="Your private Beach House at sea level"
+              body="A separate cabana beside the pool and beach — bathroom, living area, kitchenette, television and Wi-Fi. Your residence in the sky. Your beach house below."
+            />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="descend-span">
+              <div>
+                <p className="text-[0.62rem] tracking-[0.22em] text-lagoon uppercase">
+                  Sky
                 </p>
-              </a>
-            ))}
-
-            <div className="flex gap-6 md:gap-10" aria-hidden="true">
-              <div className="flex w-12 justify-center md:w-16">
-                <div className="descend-drop w-px" />
+                <p className="mt-1.5 font-display text-[2.35rem] leading-none font-light tracking-[-0.04em] text-ink md:text-[2.75rem]">
+                  48
+                </p>
               </div>
-              <div className="flex-1" />
-            </div>
-
-            <div
-              className="mb-8 flex items-center gap-6 md:mb-10 md:gap-10"
-              aria-hidden="true"
-            >
-              <div className="w-12 md:w-16" />
-              <div className="h-px flex-1 bg-lagoon/20" />
-            </div>
-
-            <div className="flex gap-6 md:gap-10">
-              <div className="flex w-12 shrink-0 flex-col items-center pt-2 md:w-16">
-                <WaveMark className="mb-3" />
-                <span className="size-2.5 rounded-full bg-lagoon" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="font-display text-[clamp(3.8rem,9vw,6.8rem)] leading-none font-light tracking-[-0.05em] text-lagoon tabular-nums">
+              <div className="descend-span-line" aria-hidden="true" />
+              <div className="text-right">
+                <p className="text-[0.62rem] tracking-[0.22em] text-lagoon uppercase">
+                  Sea
+                </p>
+                <p className="mt-1.5 font-display text-[2.35rem] leading-none font-light tracking-[-0.04em] text-ink md:text-[2.75rem]">
                   0
                 </p>
-                <p className="mt-5 text-[0.62rem] tracking-[0.28em] text-lagoon uppercase">
-                  Sea level
-                </p>
-                <h3 className="mt-2 font-display text-[clamp(1.7rem,3.2vw,2.35rem)] leading-[1.12] font-light text-ink">
-                  Beach House
-                </h3>
-                <p className="mt-4 max-w-md text-[1.05rem] leading-[1.75] text-ink/70">
-                  A separate cabana beside the pool and beach — bathroom,
-                  living area, kitchenette, television and Wi-Fi.
-                </p>
-                <ul className="mt-8 max-w-lg">
-                  {rooms.map((room) => (
-                    <li
-                      key={room}
-                      className="border-t border-lagoon/15 py-3.5 text-[0.72rem] tracking-[0.2em] text-lagoon uppercase last:border-b"
-                    >
-                      {room}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
+      </PagePad>
 
-        <p className="mt-14 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase md:mt-16">
-          Two addresses · the sky and the sand
-        </p>
+      <div className="px-6 pb-12 md:px-12 md:pb-16 lg:px-20">
+        <Reveal>
+          <figure>
+            <div className="descend-view relative">
+              <img
+                src={photos.poolBeach}
+                alt="Pool and palms at sea level, the Atlantic beyond"
+                className="absolute inset-0 h-full w-full max-w-none object-cover"
+                style={{ objectPosition: '50% 48%' }}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/45 via-ink/10 to-transparent px-5 pt-16 pb-5 md:px-8 md:pb-6">
+                <p className="text-[0.62rem] tracking-[0.22em] text-white uppercase [text-shadow:0_8px_24px_rgba(20,52,58,0.45)]">
+                  Two addresses · the sky and the sand
+                </p>
+              </div>
+            </div>
+            <figcaption className="mt-3 text-[0.68rem] tracking-[0.2em] text-lagoon uppercase">
+              Private Beach House · sea level
+            </figcaption>
+          </figure>
+        </Reveal>
+      </div>
+
+      <PagePad className="pt-6 pb-24 md:pt-10 md:pb-32">
+        <ul className="grid gap-8 border-t border-lagoon/15 pt-10 sm:grid-cols-2 lg:grid-cols-3 md:pt-12">
+          {rooms.map((item, i) => (
+            <li key={item.title}>
+              <Reveal delay={0.06 * i}>
+                <p className="text-[0.68rem] tracking-[0.28em] text-lagoon uppercase">
+                  {item.title}
+                </p>
+                <p className="mt-2 font-display text-[1.35rem] leading-snug font-light text-ink md:text-[1.5rem]">
+                  {item.body}
+                </p>
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </PagePad>
     </section>
   )

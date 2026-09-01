@@ -8,11 +8,21 @@ type Props = {
   body?: string
   kicker?: string
   onDark?: boolean
+  className?: string
+  titleClassName?: string
 }
 
-export function SectionCopy({ label, title, body, kicker, onDark = false }: Props) {
+export function SectionCopy({
+  label,
+  title,
+  body,
+  kicker,
+  onDark = false,
+  className,
+  titleClassName,
+}: Props) {
   return (
-    <div className="max-w-lg">
+    <div className={className ?? 'max-w-lg'}>
       {kicker ? (
         <p
           className={cn(
@@ -28,7 +38,8 @@ export function SectionCopy({ label, title, body, kicker, onDark = false }: Prop
       </SectionLabel>
       <h2
         className={cn(
-          'font-display text-[clamp(2rem,4vw,3.4rem)] leading-[1.12] font-light',
+          'font-display leading-[1.12] font-light',
+          titleClassName ?? 'text-[clamp(2rem,4vw,3.4rem)]',
           onDark ? 'text-white' : 'text-ink',
         )}
       >

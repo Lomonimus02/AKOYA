@@ -43,7 +43,7 @@ export function SiteHeader() {
         className={cn(
           'fixed inset-x-0 top-0 z-[90] transition-[background,box-shadow] duration-500',
           scrolled || open
-            ? 'bg-foam/80 shadow-[0_1px_0_rgba(26,95,150,0.12)] backdrop-blur-md'
+            ? 'bg-white/90 backdrop-blur-md'
             : 'bg-transparent',
         )}
       >

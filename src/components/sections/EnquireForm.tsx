@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import { ENQUIRY_EMAIL } from '../../data/copy'
 import { photos } from '../../data/images'
-import { PagePad } from '../ui/PagePad'
 import { Photo } from '../ui/Photo'
 import { Reveal } from '../ui/Reveal'
 import { SectionCopy } from '../ui/SectionCopy'
@@ -49,9 +48,9 @@ export function EnquireForm() {
 
   return (
     <section id="enquire" className="enquire-wash scroll-mt-24">
-      <div className="grid lg:grid-cols-2">
-        <PagePad className="flex items-center py-24 lg:py-32">
-          <div className="w-full max-w-lg">
+      <div className="grid lg:min-h-dvh lg:grid-cols-[minmax(32rem,42%)_minmax(0,1fr)]">
+        <div className="flex items-center px-6 pt-32 pb-24 md:px-12 md:pt-44 md:pb-32 lg:px-12 lg:pt-56 xl:px-16">
+          <div className="w-full">
             <Reveal>
               <SectionCopy
                 label="Enquire"
@@ -68,7 +67,7 @@ export function EnquireForm() {
 
             {status === 'success' ? (
               <div
-                className="mt-12 text-[1.02rem] leading-relaxed text-ink/80"
+                className="mt-12 max-w-lg text-[1.02rem] leading-relaxed text-ink/80"
                 role="status"
                 aria-live="polite"
               >
@@ -85,7 +84,7 @@ export function EnquireForm() {
                 </p>
               </div>
             ) : (
-              <form className="mt-12" onSubmit={onSubmit} noValidate>
+              <form className="mt-12 max-w-lg" onSubmit={onSubmit} noValidate>
                 <Field name="name" label="Name" required />
                 <Field name="email" label="Email" type="email" required />
                 <Field name="dates" label="Preferred dates or duration" />
@@ -113,14 +112,15 @@ export function EnquireForm() {
               </form>
             )}
           </div>
-        </PagePad>
-        <div className="min-h-[50vh] lg:min-h-full">
+        </div>
+        <div className="min-h-[50vh] lg:h-full">
           <Photo
             src={photos.poolHigh}
             alt="Pool, palms and the Atlantic from above"
             caption="Private enquiries"
-            className="enquire-frame h-full"
-            imgClassName="h-full min-h-[50vh] lg:min-h-full"
+            stretch
+            className="enquire-frame min-h-[50vh]"
+            captionClassName="px-6 pb-8 md:px-12 lg:px-20"
           />
         </div>
       </div>

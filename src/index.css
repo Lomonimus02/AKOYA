@@ -75,10 +75,34 @@ img {
 .retreat-wash {
   background: linear-gradient(
     180deg,
-    var(--color-foam) 0%,
-    color-mix(in srgb, var(--color-sky) 32%, var(--color-foam)) 46%,
-    var(--color-foam) 100%
+    #fff 0%,
+    #fff 22%,
+    var(--color-foam) 48%,
+    color-mix(in srgb, var(--color-sky) 22%, var(--color-foam)) 100%
   );
+}
+
+.discover-retreat-stack {
+  position: relative;
+}
+
+.discover-retreat-stack:has(#discover.discover-pin) {
+  height: var(--stack-h);
+}
+
+#discover.discover-pin {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 360dvh;
+  z-index: 2;
+  background: transparent;
+}
+
+.discover-retreat-stack:has(#discover.discover-pin) > #retreat {
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .experience-wash {
@@ -97,9 +121,15 @@ img {
 }
 
 .experience-window {
-  height: min(86vh, 980px);
-  min-height: 32rem;
+  height: min(94vh, 1280px);
+  min-height: 40rem;
   border-radius: 3rem 3rem 0 0;
+}
+
+.experience-window-pin {
+  height: auto;
+  min-height: 0;
+  border-radius: 3rem;
 }
 
 .ascend-wash {
@@ -152,18 +182,7 @@ img {
 
   .ascend-panel {
     background:
-      linear-gradient(
-        180deg,
-        var(--color-foam) 0%,
-        rgba(242, 247, 252, 0.28) 2rem,
-        rgba(18, 42, 58, 0.94) 8.5rem,
-        var(--color-ink) 12rem
-      ),
-      radial-gradient(
-        90% 55% at 100% 78%,
-        rgba(186, 92, 64, 0.18),
-        transparent 58%
-      ),
+      radial-gradient(80% 50% at 0% 100%, rgba(94, 176, 224, 0.16), transparent 58%),
       var(--color-ink);
   }
 }
@@ -184,17 +203,20 @@ img {
     180deg,
     transparent 0%,
     transparent 58%,
-    color-mix(in srgb, var(--color-mist) 42%, var(--color-foam)) 100%
+    var(--color-foam) 100%
   );
 }
 
 .ascend-outside {
-  background: linear-gradient(
-    165deg,
-    color-mix(in srgb, var(--color-sky) 55%, var(--color-foam)) 0%,
-    color-mix(in srgb, var(--color-sand) 62%, var(--color-foam)) 52%,
-    color-mix(in srgb, var(--color-mist) 42%, var(--color-foam)) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-foam) 0%,
+      rgba(211, 235, 248, 0.35) 42%,
+      var(--color-foam) 100%
+    ),
+    radial-gradient(900px 480px at 100% 0%, rgba(94, 176, 224, 0.18), transparent 55%),
+    var(--color-foam);
 }
 
 @media (min-width: 1024px) {
@@ -208,47 +230,164 @@ img {
 }
 
 .descend-wash {
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--color-mist) 42%, var(--color-foam)) 0%,
-    color-mix(in srgb, var(--color-sky) 72%, var(--color-foam)) 16rem,
-    color-mix(in srgb, var(--color-sand) 38%, var(--color-foam)) 52%,
-    color-mix(in srgb, var(--color-sand) 82%, var(--color-mist)) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-foam) 0%,
+      rgba(211, 235, 248, 0.38) 10rem,
+      var(--color-foam) 100%
+    ),
+    radial-gradient(1000px 520px at 8% 12%, rgba(94, 176, 224, 0.2), transparent 55%),
+    var(--color-foam);
+}
+
+.descend-view {
+  height: min(82vh, 980px);
+  min-height: 28rem;
+  overflow: hidden;
+  border-radius: 3rem 3rem 0 0;
 }
 
 .indulge-wash {
   background:
-    radial-gradient(
-      70rem 36rem at 92% 0%,
-      rgba(94, 176, 224, 0.2),
-      transparent 56%
-    ),
+    radial-gradient(70rem 36rem at 92% 0%, rgba(94, 176, 224, 0.22), transparent 56%),
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--color-sand) 82%, var(--color-mist)) 0%,
-      var(--color-foam) 11rem,
+      var(--color-foam) 0%,
+      rgba(211, 235, 248, 0.32) 12rem,
       var(--color-foam) 100%
-    );
+    ),
+    var(--color-foam);
 }
 
 .relax-wash {
-  background: linear-gradient(
-    180deg,
-    var(--color-foam) 0%,
-    var(--color-mist) 18%,
-    var(--color-mist) 82%,
-    var(--color-foam) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-foam) 0%,
+      rgba(211, 235, 248, 0.34) 40%,
+      var(--color-foam) 100%
+    ),
+    radial-gradient(900px 480px at 100% 20%, rgba(179, 212, 236, 0.32), transparent 52%),
+    var(--color-foam);
 }
 
 .understand-wash {
-  background: linear-gradient(
-    180deg,
-    var(--color-foam) 0%,
-    color-mix(in srgb, var(--color-sky) 22%, var(--color-foam)) 48%,
-    var(--color-foam) 100%
-  );
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-foam) 0%,
+      rgba(211, 235, 248, 0.3) 46%,
+      var(--color-foam) 100%
+    ),
+    var(--color-foam);
+}
+
+.understand-tower {
+  position: relative;
+  height: min(78vh, 720px);
+  min-height: 26rem;
+  overflow: hidden;
+  background: var(--color-ink);
+}
+
+.understand-shade {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 42, 58, 0.2) 0%,
+      rgba(18, 42, 58, 0.02) 36%,
+      transparent 52%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(18, 42, 58, 0.38) 0%,
+      rgba(18, 42, 58, 0.1) 38%,
+      transparent 62%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 58%,
+      rgba(18, 42, 58, 0.46) 100%
+    );
+}
+
+.understand-sumblock {
+  position: absolute;
+  z-index: 2;
+  right: 1.5rem;
+  bottom: 1.35rem;
+  left: 1.5rem;
+}
+
+.understand-sum {
+  font-family: var(--font-display);
+  font-size: clamp(3.6rem, 14vw, 8.5rem);
+  font-weight: 300;
+  line-height: 0.82;
+  letter-spacing: -0.05em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 10px 36px rgba(20, 52, 58, 0.35);
+}
+
+.understand-folio {
+  position: relative;
+  z-index: 3;
+  background: transparent;
+}
+
+.understand-stay {
+  display: flex;
+  gap: 1.25rem;
+  height: 0.95rem;
+}
+
+.understand-decade {
+  display: flex;
+  flex: 1 1 0;
+  justify-content: space-between;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.understand-day {
+  display: block;
+  flex: 0 0 1.5px;
+  width: 1.5px;
+  background: color-mix(in srgb, var(--color-lagoon) 48%, transparent);
+}
+
+.understand-decade:last-child .understand-day:last-child {
+  background: var(--color-lagoon);
+}
+
+@media (min-width: 768px) {
+  .understand-sumblock {
+    right: 3rem;
+    bottom: 1.6rem;
+    left: 3rem;
+  }
+
+  .descend-view {
+    border-radius: 6rem 6rem 0 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .understand-tower {
+    height: min(88vh, 980px);
+    min-height: 36rem;
+  }
+
+  .understand-sumblock {
+    left: 5rem;
+    right: 5rem;
+    bottom: 1.85rem;
+  }
 }
 
 .enquire-wash {
@@ -256,15 +395,15 @@ img {
     180deg,
     var(--color-foam) 0%,
     var(--color-foam) 58%,
-    var(--color-sky) 100%
+    color-mix(in srgb, var(--color-sky) 55%, var(--color-foam)) 100%
   );
 }
 
 .footer-wash {
   background: linear-gradient(
     180deg,
-    var(--color-sky) 0%,
-    color-mix(in srgb, var(--color-sky) 82%, var(--color-mist)) 100%
+    color-mix(in srgb, var(--color-sky) 55%, var(--color-foam)) 0%,
+    var(--color-foam) 100%
   );
 }
 
@@ -282,29 +421,27 @@ img {
   background: linear-gradient(
     180deg,
     transparent 0%,
-    var(--color-sky) 100%
+    color-mix(in srgb, var(--color-sky) 55%, var(--color-foam)) 100%
   );
 }
 
-.descend-drop {
-  min-height: 5.5rem;
+.descend-span {
+  display: grid;
+  grid-template-columns: auto minmax(4rem, 1fr) auto;
+  align-items: end;
+  gap: 1.1rem 1.35rem;
+  width: min(100%, 22rem);
+}
+
+.descend-span-line {
+  height: 1px;
+  margin-bottom: 0.95rem;
   background: linear-gradient(
-    180deg,
-    rgba(26, 95, 150, 0.2) 0%,
-    rgba(107, 181, 217, 0.55) 100%
+    90deg,
+    color-mix(in srgb, var(--color-lagoon) 42%, transparent),
+    var(--color-aqua),
+    color-mix(in srgb, var(--color-lagoon) 42%, transparent)
   );
-}
-
-@media (min-width: 768px) {
-  .descend-drop {
-    min-height: 16rem;
-  }
-}
-
-.indulge-door-word {
-  font-size: clamp(4.6rem, 16vw, 10.5rem);
-  line-height: 0.78;
-  font-style: italic;
 }
 
 .indulge-arcade {
@@ -531,6 +668,12 @@ img {
     border-radius: 2.25rem 2.25rem 0 0;
   }
 
+  .experience-window-pin {
+    height: auto;
+    min-height: 0;
+    border-radius: 2.25rem;
+  }
+
   .ascend-office {
     min-height: 78vh;
   }
@@ -552,6 +695,12 @@ img {
 
   .indulge-door {
     min-height: 4.75rem;
+  }
+
+  .descend-view {
+    height: min(58vh, 520px);
+    min-height: 20rem;
+    border-radius: 2.25rem 2.25rem 0 0;
   }
 }
 
@@ -585,22 +734,6 @@ img {
     70% 50% at 70% 30%,
     rgba(94, 176, 224, 0.3),
     transparent 70%
-  );
-}
-
-.discover-wash::after {
-  content: "";
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 20;
-  height: 2.25rem;
-  pointer-events: none;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(242, 247, 252, 0.35) 55%,
-    var(--color-foam) 100%
   );
 }
 

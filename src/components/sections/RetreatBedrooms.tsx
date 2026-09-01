@@ -46,8 +46,8 @@ function RetreatPane({
       <div
         className={
           captionAt === 'top'
-            ? 'pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-ink/40 via-ink/8 to-transparent px-5 pt-5 pb-12 md:px-8 md:pt-6 lg:px-10 lg:pt-8'
-            : 'pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/50 via-ink/12 to-transparent px-4 pt-16 pb-4 md:px-6 md:pb-5'
+            ? 'pointer-events-none absolute inset-x-0 top-0 bg-gradient-to-b from-ink/40 via-ink/8 to-transparent px-6 pt-5 pb-12 md:px-8 md:pt-6 lg:px-10 lg:pt-8'
+            : 'pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/50 via-ink/12 to-transparent px-6 pt-16 pb-5 md:px-8 md:pb-6'
         }
       >
         <p className="text-[0.62rem] tracking-[0.22em] text-white uppercase [text-shadow:0_8px_24px_rgba(20,52,58,0.45)] md:text-[0.68rem]">
@@ -61,7 +61,7 @@ function RetreatPane({
 export function RetreatBedrooms() {
   return (
     <section id="retreat" className="retreat-wash scroll-mt-24">
-      <PagePad className="pt-16 pb-6 md:pt-24 md:pb-8">
+      <PagePad className="pt-24 pb-6 md:pt-32 md:pb-8 lg:pt-40">
         <Reveal>
           <SectionCopy
             kicker="46"

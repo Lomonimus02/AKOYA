@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useState } from 'react'
 import { photos } from '../../data/images'
-import { easeHeroSettle } from '../../lib/motion'
 import { useMedia } from '../../hooks/useMedia'
+import { easeHeroSettle } from '../../lib/motion'
 
 export function Hero() {
   const reduce = useReducedMotion()
@@ -17,7 +17,10 @@ export function Hero() {
   const rest = { opacity: 1, x: 0, y: 0, scale: 1 }
 
   return (
-    <section id="arrive" className="relative h-dvh min-h-[640px] overflow-hidden">
+    <section
+      id="arrive"
+      className="relative h-dvh min-h-[640px] overflow-hidden"
+    >
       <picture className="absolute inset-0 block h-full w-full">
         <source
           media="(max-width: 767px) and (orientation: portrait)"
@@ -27,11 +30,12 @@ export function Hero() {
         <img
           src={photos.aerialCabana}
           alt="Akoya Miami Beach — private residence above the Atlantic"
-          className="hero-photo photo-drift absolute inset-0 h-full w-full max-w-none object-cover"
+          className="hero-photo absolute inset-0 h-full w-full max-w-none object-cover"
           fetchPriority="high"
           decoding="async"
         />
       </picture>
+
       <div className="photo-veil pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[52%] bg-gradient-to-t from-ink/70 via-ink/20 to-transparent" />
 
